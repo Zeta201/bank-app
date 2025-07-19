@@ -1,7 +1,7 @@
 // src/services/api.js
 
 import axios from 'axios';
-import config from '../config'; // Import config
+import config from '../../public/config';
 
 const API_BASE_URL = config.apiBaseUrl; // Get base URL from config
 // Users
