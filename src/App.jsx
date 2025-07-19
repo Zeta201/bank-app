@@ -1,20 +1,28 @@
-// src/App.js
-
-import React from 'react';
-import CreateUser from './components/CreateUser';
-import CreateAccount from './components/CreateAccount';
-import Deposit from './components/Deposit';
-import Withdraw from './components/Withdraw';
+// src/App.jsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import WelcomePage from './components/WelcomePage';
+import SignUp from './pages/SignUp';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Bank Application</h1>
-      <CreateUser />
-      <CreateAccount />
-      <Deposit />
-      <Withdraw />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
