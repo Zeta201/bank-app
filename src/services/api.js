@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { getToken } from '../utils/auth';
 
-// const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
+const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
 
 // // Users
 // export const createUser = (userData) => axios.post(`${apiUrl}/users`, userData);
@@ -23,15 +23,13 @@ import { getToken } from '../utils/auth';
 // export const getTransactionsByAccountNo = (accountNo) => axios.get(`${apiUrl}/accounts/${accountNo}/transactions`);
 
 
-const API_BASE_URL = 'http://localhost:8080';
-
 export const signup = async (userData) => {
-  const res = await axios.post(`${API_BASE_URL}/signup`, userData);
+  const res = await axios.post(`${apiUrl}/signup`, userData);
   return res.data;
 };
 
 export const login = async (credentials) => {
-  const res = await axios.post(`${API_BASE_URL}/login`, credentials);
+  const res = await axios.post(`${apiUrl}/login`, credentials);
   return res.data;
 };
 
@@ -43,20 +41,20 @@ const authHeaders = () => ({
 });
 
 export const getCurrentUser = async (userId) => {
-  const res = await axios.get(`${API_BASE_URL}/users/${userId}`, authHeaders());
+  const res = await axios.get(`${apiUrl}/users/${userId}`, authHeaders());
   return res.data;
 };
 
 
 export const getAccountsByUser = async (userId) => {
-  const res = await axios.get(`${API_BASE_URL}/accounts`, authHeaders());
+  const res = await axios.get(`${apiUrl}/accounts`, authHeaders());
   return res.data;
 };
 
 
 export const depositToAccount = async (accountNo, amount) => {
   const response = await axios.post(
-    `${API_BASE_URL}/accounts/${accountNo}/deposit`,
+    `${apiUrl}/accounts/${accountNo}/deposit`,
     { amount }, // body payload
     authHeaders() // config (headers, etc.)
   );
@@ -64,7 +62,7 @@ export const depositToAccount = async (accountNo, amount) => {
 };
 
 export const withdrawFromAccount = async (accountNo, amount) => {
-  const response = await axios.post(`${API_BASE_URL}/accounts/${accountNo}/withdraw`, {amount}, authHeaders());
+  const response = await axios.post(`${apiUrl}/accounts/${accountNo}/withdraw`, {amount}, authHeaders());
   return response.data;
 
 };
@@ -72,7 +70,7 @@ export const withdrawFromAccount = async (accountNo, amount) => {
 
 export const getTransactionsByAccount = async (accountNo) => {
   const response = await axios.get(
-    `${API_BASE_URL}/accounts/${accountNo}/transactions`,
+    `${apiUrl}/accounts/${accountNo}/transactions`,
     authHeaders()
   );
   return response.data;
@@ -82,7 +80,7 @@ export const getTransactionsByAccount = async (accountNo) => {
 
 export const transferBetweenAccounts = async (fromAccountNo, toAccountNo, amount) => {
   const response = await axios.post(
-    `${API_BASE_URL}/accounts/transfer/${fromAccountNo}/${toAccountNo}`,
+    `${apiUrl}/accounts/transfer/${fromAccountNo}/${toAccountNo}`,
     { amount },
     authHeaders()
   );
