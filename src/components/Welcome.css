@@ -1,0 +1,59 @@
+/* Welcome.css */
+
+.welcome-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #e3f2fd, #ffffff);
+}
+
+.welcome-card {
+  background-color: white;
+  padding: 50px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-card h1 {
+  font-size: 2.5rem;
+  color: #1976d2;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+/* .secondary-btn {
+  background-color: #757575;
+} */
+
+.secondary-btn:hover {
+  background-color: #616161;
+}

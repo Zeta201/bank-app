@@ -4,7 +4,7 @@ import axios from 'axios';
 import { getToken } from '../utils/auth';
 
 const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
-
+// const apiUrl = "http://localhost:8080"
 // // Users
 // export const createUser = (userData) => axios.post(`${apiUrl}/users`, userData);
 // export const getUserById = (userId) => axios.get(`${apiUrl}/users/${userId}`);
@@ -48,6 +48,7 @@ export const getCurrentUser = async (userId) => {
 
 export const getAccountsByUser = async (userId) => {
   const res = await axios.get(`${apiUrl}/accounts`, authHeaders());
+  console.log(res.data)
   return res.data;
 };
 
@@ -87,3 +88,11 @@ export const transferBetweenAccounts = async (fromAccountNo, toAccountNo, amount
   return response.data;
 };
 
+export const createAccount = async (accountType, initialBalance) => {
+  const response = await axios.post(`${apiUrl}/accounts`, {
+    "account_type" : accountType,
+    "initial_balance" : initialBalance
+  }, authHeaders());
+  return response.data
+
+};
